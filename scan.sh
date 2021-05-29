@@ -30,7 +30,7 @@ d=$(date +"%b-%d-%y %H:%M")
 function cors_urls(){
 clear
 banner
-echo -n -e ${BLUE}"\n[+]Enter target url list (e.g https://target.com) : "
+echo -n -e ${BLUE}"\n[+]Enter target urls list (e.g https://target.com) : "
 read urls
 sleep 1
 echo -e "\n\e[00;33m#################### CORS SCANNER Started On: $d ####################\e[00m"
