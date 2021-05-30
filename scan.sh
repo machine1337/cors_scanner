@@ -36,7 +36,7 @@ sleep 1
 echo -e "\n\e[00;33m#################### CORS SCANNER Started On: $d ####################\e[00m"
 for i in $(cat $urls); do
      file=$(curl -m5 -I  "{$i}" -H "Origin: evil.com")
-    echo -n -e ${YELLOW}"VULNERABLE: $i" >> output.txt
+    echo -n -e ${YELLOW}"URL: $i" >> output.txt
     echo "$file" >> output.txt
     
 
@@ -44,7 +44,7 @@ done
 sleep 1
 echo -e "\n\e[00;37m##################Searching For CORS ###########################\e[00m"
 sleep 1
-cat output.txt  |  grep -e  VULNERABLE  -e  evil  -e access-control-allow-credentials: | tee vulnerable.txt
+cat output.txt  |  grep -e  URL  -e  evil  -e access-control-allow-credentials: | tee vulnerable.txt
 rm output.txt
 }
 function cors_single(){
@@ -53,9 +53,9 @@ banner
 echo -e -n ${ORANGE}"\n[+] Enter domain name (e.g https://target.com) : "
 read domain
 file=$(curl -m5 -I $domain -H "Origin: evil.com")
-echo -n -e ${YELLOW}"VULNERABLE: $i" >> output.txt
+echo -n -e ${YELLOW}"URL: $i" >> output.txt
 echo "$file" >> output.txt
-cat output.txt | grep -e  VULNERABLE  -e  evil  -e access-control-allow-credentials:
+cat output.txt | grep -e  URL  -e  evil  -e access-control-allow-credentials:
 rm output.txt
 }
 menu(){
