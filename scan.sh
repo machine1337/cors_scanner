@@ -44,19 +44,25 @@ done
 sleep 1
 echo -e "\n\e[00;37m##################Searching For CORS ###########################\e[00m"
 sleep 1
-cat output.txt  |  grep -e  URL  -e  evil  -e access-control-allow-credentials: | tee vulnerable.txt
-rm output.txt
+cat output.txt | grep -e  URL  -e  evil  -e access-control-allow-credentials:
 }
 function cors_single(){
 clear
 banner
-echo -e -n ${ORANGE}"\n[+] Enter domain name (e.g https://target.com) : "
+echo -e -n ${CP}"\n[+] Enter domain name (e.g https://target.com) : "
 read domain
 file=$(curl -m5 -I $domain -H "Origin: evil.com")
-echo -n -e ${YELLOW}"URL: $i" >> output.txt
+echo -n -e ${YELLOW}"\nURL: $i" >> output.txt
 echo "$file" >> output.txt
-cat output.txt | grep -e  URL  -e  evil  -e access-control-allow-credentials:
-rm output.txt
+if grep -q evil   <<<"$file"
+  then
+  echo -n -e ${RED}" URL: $domain  Vulnerable\n"
+  cat output.txt | grep   -e  evil  -e access-control-allow-credentials:
+  rm output.txt
+  else
+  echo -n -e ${GREEN}" URL: $domain  Not Vulnerable"
+   rm output.txt
+ fi
 }
 menu(){
 clear
