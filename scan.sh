@@ -38,13 +38,18 @@ for i in $(cat $urls); do
      file=$(curl -m5 -I  "{$i}" -H "Origin: evil.com")
     echo -n -e ${YELLOW}"URL: $i" >> output.txt
     echo "$file" >> output.txt
-    
+    if grep -q evil   <<<"$file"
+  then
+  echo  -e ${RED}"\n URL: $i  Vulnerable\n"${RED}
+  cat output.txt | grep -e URL  -e  evil  -e access-control-allow-credentials: >> vulnerable_urls.txt
+  rm output.txt
+  else
+  echo -n -e ${GREEN}"\nURL: $i  Not Vulnerable"
+   rm output.txt
+ fi
 
 done
-sleep 1
-echo -e "\n\e[00;37m##################Searching For CORS ###########################\e[00m"
-sleep 1
-cat output.txt | grep -e  URL  -e  evil  -e access-control-allow-credentials:
+
 }
 function cors_single(){
 clear
