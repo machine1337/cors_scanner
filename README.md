@@ -6,7 +6,14 @@
    
 # Prerequisite:
      curl
- 
+
+# Installation:
+    1. git clone https://github.com/machine1337/cors_scanner
+    2. cd cors_scanner && chmod +x run.sh
+    
+ # Usage:
+     ./run.sh
+    
 # Note:
     Q: What should my urls.txt file look like?
     Ans: https://target.com
