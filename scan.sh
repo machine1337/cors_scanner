@@ -27,20 +27,29 @@ echo -e " ${RED}                             https://www.facebook.com/unknowncla
 }
 
 d=$(date +"%b-%d-%y %H:%M")
+sleep 1
+echo -e ${CP}"[+] Checking Internet Connectivity"
+if [[ "$(ping -c 1 8.8.8.8 | grep '100% packet loss' )" != "" ]]; then
+  echo "No Internet Connection"
+  exit 1
+  else
+  echo "Internet is present"
+  
+fi
 function cors_urls(){
 clear
 banner
 echo -n -e ${BLUE}"\n[+]Enter target urls list (e.g https://target.com) : "
 read urls
 sleep 1
-echo -e "\n\e[00;33m#################### CORS SCANNER Started On: $d ####################\e[00m"
+echo -e ${CNC}"\n[+] Searching For Cors Misconfiguration"
 for i in $(cat $urls); do
-     file=$(curl -m5 -I  "{$i}" -H "Origin: evil.com")
+     file=$(curl -s -m5 -I  "{$i}" -H "Origin: evil.com")  
     echo -n -e ${YELLOW}"URL: $i" >> output.txt
     echo "$file" >> output.txt
     if grep -q evil   <<<"$file"
   then
-  echo  -e ${RED}"\n URL: $i  Vulnerable\n"${RED}
+  echo  -e ${RED}"\nURL: $i  Vulnerable"${RED}
   cat output.txt | grep -e URL  -e  evil  -e access-control-allow-credentials: >> vulnerable_urls.txt
   rm output.txt
   else
@@ -56,12 +65,14 @@ clear
 banner
 echo -e -n ${CP}"\n[+] Enter domain name (e.g https://target.com) : "
 read domain
-file=$(curl -m5 -I $domain -H "Origin: evil.com")
+sleep 1
+echo -e ${CNC}"\n[+] Searching For Cors Misconfiguration"
+file=$(curl -s -m5 -I $domain -H "Origin: evil.com")
 echo -n -e ${YELLOW}"\nURL: $i" >> output.txt
 echo "$file" >> output.txt
 if grep -q evil   <<<"$file"
   then
-  echo -n -e ${RED}" URL: $domain  Vulnerable\n"
+  echo -n -e ${RED}"URL: $domain  Vulnerable\n"
   cat output.txt | grep   -e  evil  -e access-control-allow-credentials:
   rm output.txt
   else
