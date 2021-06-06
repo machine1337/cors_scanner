@@ -15,15 +15,16 @@ CPO='\033[1;38;5;205m'
 CN='\033[1;38;5;247m'
 CNC='\033[1;38;5;051m'
 function banner(){
-echo -e ${CP}"               ____ ___  ____  ____   ____    _    _   _ _   _ _____ ____     "
-echo -e ${CP}"              / ___/ _ \|  _ \/ ___| / ___|  / \  | \ | | \ | | ____|  _ \    "
-echo -e ${CP}"              | |  | | | | |_) \___ \| |    / _ \ |  \| |  \| |  _| | |_) |  "
-echo -e ${CP}"              | |__| |_| |  _ < ___) | |___/ ___ \| |\  | |\  | |___|  _ <   "
-echo -e ${CP}"              \____\___/|_| \_\____/ \____/_/   \_\_| \_|_| \_|_____|_| \_\  "
-
-echo -e "${BLUE2}                  A Framework for Scanning CORS MISCONFIGURATION"
-echo -e "       ${BLUE2}                           Coded By: Machine404"
-echo -e " ${RED}                             https://www.facebook.com/unknownclay "
+echo -e ${RED}"############################################################################"
+echo -e ${CP}"            ____ ___  ____  ____   ____    _    _   _ _   _ _____ ____     #"
+echo -e ${CP}"           / ___/ _ \|  _ \/ ___| / ___|  / \  | \ | | \ | | ____|  _ \    #"
+echo -e ${CP}"           | |  | | | | |_) \___ \| |    / _ \ |  \| |  \| |  _| | |_) |   #"
+echo -e ${CP}"           | |__| |_| |  _ < ___) | |___/ ___ \| |\  | |\  | |___|  _ <    #"
+echo -e ${CP}"           \____\___/|_| \_\____/ \____/_/   \_\_| \_|_| \_|_____|_| \_\   #"
+echo -e "${BLUE2}                  A Framework for Scanning CORS MISCONFIGURATION           #"
+echo -e "       ${BLUE2}                      Coded By: Machine404                          #"
+echo -e " ${RED}                      https://www.facebook.com/unknownclay                #"
+echo -e ${RED}"############################################################################"
 }
 
 d=$(date +"%b-%d-%y %H:%M")
