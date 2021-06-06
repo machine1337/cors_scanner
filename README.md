@@ -1,5 +1,5 @@
 # cors_scanner
-![cors](https://user-images.githubusercontent.com/82051128/120067117-5bee4700-c093-11eb-8661-13f19c208f95.png)
+![corsy](https://user-images.githubusercontent.com/82051128/120935097-905ca580-c71a-11eb-9b6f-a00333b0eba8.png)
 
 # About:
      The purpose of this script is to scan for all known misconfiguration in CORS Implementation.
