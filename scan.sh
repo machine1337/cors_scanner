@@ -50,11 +50,11 @@ for i in $(cat $urls); do
     echo "$file" >> output.txt
     if grep -q evil   <<<"$file"
   then
-  echo  -e ${RED}"\nURL: $i  Vulnerable"${RED}
+  echo  -e ${RED}"\nURL: $i  [Vulnerable]"${RED}
   cat output.txt | grep -e URL  -e  evil  -e access-control-allow-credentials: >> vulnerable_urls.txt
   rm output.txt
   else
-  echo -n -e ${GREEN}"\nURL: $i  Not Vulnerable"
+  echo -n -e ${GREEN}"\nURL: $i  [Not Vulnerable]"
    rm output.txt
  fi
 
@@ -73,11 +73,11 @@ echo -n -e ${YELLOW}"\nURL: $i" >> output.txt
 echo "$file" >> output.txt
 if grep -q evil   <<<"$file"
   then
-  echo -n -e ${RED}"URL: $domain  Vulnerable\n"
+  echo -n -e ${RED}"URL: $domain  [Vulnerable]\n"
   cat output.txt | grep   -e  evil  -e access-control-allow-credentials:
   rm output.txt
   else
-  echo -n -e ${GREEN}" URL: $domain  Not Vulnerable"
+  echo -n -e ${GREEN}" URL: $domain  [Not Vulnerable]"
    rm output.txt
  fi
 }
