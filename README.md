@@ -18,5 +18,3 @@
     Q: What should my urls.txt file look like?
     Ans: https://target.com
     
-# Author:
-    twitter.com/whoami4041
